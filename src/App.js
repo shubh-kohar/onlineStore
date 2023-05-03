@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { clothing } from "./DataDB";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Appbar */}
+     <Header/>
+
+     <div className="grid grid-cols-5 gap-3 p-5">
+      {clothing.map((e)=><div className="flex flex-col border max-w-md hover:scale-105 cursor-pointer">
+        <img src={e.itemImage} alt="itemImage" className="w-full object-cover aspect-square" />
+
+        <div className="flex flex-col p-2">
+
+        <h1>{e.itemName}</h1>
+        <p className="font-bold">{e.itemPrice}/-</p>
+        </div>
+      </div>)}
+     </div>
+
+
+
+     {/* Footer */}
+     <Footer/>
+     
     </div>
   );
 }
